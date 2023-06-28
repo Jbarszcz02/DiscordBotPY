@@ -63,6 +63,15 @@ async def join(ctx):
         channel = ctx.message.author.voice.channel
         await channel.connect()
         
+@bot.command(name='leave', help="To make bot leave the channel")
+async def leave(ctx):
+    voice_client = ctx.message.guild.voice_client
+    if voice_client.is_connected():
+        await voice_client.disconnect()
+    else:
+        await ctx.send("The bot is not connected to a voice channel.")
+        
+        
             
     
 
